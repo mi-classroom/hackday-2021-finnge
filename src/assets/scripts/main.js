@@ -102,9 +102,42 @@ function navToNeighbours () {
   data.previous = false;
   data.next = false;
 
+  const $navigation = document.querySelector('[data-js-footer-nav]');
+
+  const template = (type, url, img, title) => `
+    <div class="nav-item ${type}">
+      <a href="${url}">
+        <img src="${img}">
+        <span>${title}</span>
+      </a>
+    </div>`;
+
   function generateNavitem(type, data) { 
     console.log(type);
     console.log(data);
+
+    const element = template(
+      type,
+      `../${data.link}`,
+      data.bildurlxs,
+      data.title,
+    );
+
+    $navigation.insertAdjacentHTML('beforeend', element);
+
+    /*<div class="nav-item previous" id="nav-item-prev">
+          <a href="{{url-zum-vorherigen-item}}">
+            <img src="{{img-src-des-vorherigen-items}}">
+            <span>{{title-des-vorherigen-items}}</span>
+          </a>
+        </div>
+        <div class="nav-item next" id="nav-item-next">
+          <a href="{{url-zum-naechsten-item}}">
+            <img src="{{img-src-des-naechsten-items}}">
+            <span>{{title-des-naechsten-items}}</span>
+          </a>
+        </div>*/
+      
 
     /* Hier bitte den Code für die Navigation zwischen den Gemälden einfügen. 
     
