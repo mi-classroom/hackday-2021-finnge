@@ -421,10 +421,23 @@ h1 {
   transition: 0.5s; }
 
 h2 {
+  color: #fff;
   font-size: 1.6rem; }
 
 h3 {
   font-size: 1.28rem; }
+
+.subtitle {
+  margin-bottom: 2rem;
+  color: #fff;
+  font-size: 1.28rem; }
+
+h2 + .subtitle::before {
+  display: block;
+  width: 5.04rem;
+  border: solid 1px #fc0;
+  margin-bottom: 1rem;
+  content: ''; }
 
 .header > h1 {
   font-size: clamp(1.6rem, 3vw, 2rem); }

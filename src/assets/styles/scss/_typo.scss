@@ -29,11 +29,26 @@ h1 {
 }
 
 h2 {
+  color: #fff;
   font-size: $l;
 }
 
 h3 {
   font-size: $m;
+}
+
+.subtitle {
+  margin-bottom: $xl;
+  color: #fff;
+  font-size: $m;
+}
+
+h2 + .subtitle::before {
+  display: block;
+  width: 2 * $xxl;
+  border: solid $border-width-s $accent;
+  margin-bottom: $s;
+  content: '';
 }
 
 .header > h1 {
