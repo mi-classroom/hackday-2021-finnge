@@ -36,7 +36,11 @@ h3 {
   font-size: $m;
 }
 
+.header > h1 {
+  font-size: clamp($l, 3vw, $xl);
+}
+
 .herotext {
   padding-bottom: $m;
-  font-size: $l;
+  font-size: clamp($m, 3vw, $l);
 }
