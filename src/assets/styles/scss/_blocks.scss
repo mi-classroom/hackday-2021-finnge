@@ -135,4 +135,9 @@
   label {
     margin-bottom: $s;
   }
+
+  &__error-message {
+    color: $error;
+    font-family: $font-sans-serif-bold;
+  }
 }

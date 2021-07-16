@@ -4,24 +4,45 @@
 function formValidator() { 
 
   let checkForm = function (form) {
-    
-    console.log(form);
 
-    /* Hier bitte die Validierung einfügen 
-    
-    …
-    …
-    …
+    const formInputs = form.elements;
+    const errorMessage = form.querySelector('.image-form__error-message');
+    let everythingIsFine = true;
+    errorMessage.innerText = '';
 
-    */
-    
+    for (let i = 0; i < formInputs.length; i++) {
+      if (formInputs[i].type === 'reset' || formInputs[i].type === 'submit') {
+        continue;
+      }
+
+      formInputs[i].classList.remove('ut-has-error');
+
+      if (!formInputs[i].value) {
+        everythingIsFine = false;
+        formInputs[i].classList.add('ut-has-error');
+      }
+    }
+
+    if (!everythingIsFine) {
+      errorMessage.innerText = "Es müssen alle Felder ausgefüllt werden";
+      throw Error('Form Validation not successful');
+    }
+
+    return true;
   }
 
   this.scan = function () { 
     document.querySelectorAll('form[data-js-validate=true]').forEach(function (form) {  
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        checkForm(form);
+        try {
+          
+          if (checkForm(form)) {
+            form.submit();
+          }
+        } catch(e) {
+          console.error(e);
+        }
       });
     });
   }
