@@ -66,18 +66,30 @@ function viewSwitcher() {
       /* Interaktionselement aktivieren (sichtbar machen) */
       switcherButton.classList.add("is-active");
 
-      /* Hier bitte den restlichen Code für den ViewSwitcher einfügen.
-         Für den Switcher Button gibt es schon die CSS-Klassen
-         card-view: für den Card View (default)
-         list-view: für den List View
-
-         …
-         …
-         …
-
-      */
+      switcherButton.addEventListener('click', this.switchState.bind(this));
     }
   }
+
+  this.switchState = function() {
+    if (switcherButton.dataset.view === 'list') {
+      switcherButton.dataset.view = 'cards'
+
+      switcherButton.classList.remove('list-view');
+      switcherButton.classList.add('card-view')
+
+      overviewContainer.classList.remove('is-list-view');
+      overviewContainer.classList.add('is-card-view');
+
+    } else if (switcherButton.dataset.view === 'cards') {
+      switcherButton.dataset.view = 'list'
+
+      switcherButton.classList.remove('card-view');
+      switcherButton.classList.add('list-view');
+
+      overviewContainer.classList.remove('is-card-view');
+      overviewContainer.classList.add('is-list-view');
+    }
+  };
 }
 
 

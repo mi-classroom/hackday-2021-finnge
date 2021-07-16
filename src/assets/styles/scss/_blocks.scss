@@ -81,10 +81,17 @@
   }
 
   .is-list-view & {
-    display: grid;
-    grid-template-columns: 300px 1fr;
+    @media screen and (min-width: $vp-medium) {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+    }
 
     >figcaption {
+      @media screen and (min-width: $vp-medium) {
+        border-top: none;
+        border-left: solid $border-width-s $light;
+      }
+
       >.additional-info {
         display: block;
 

@@ -7,15 +7,17 @@
   display: grid;
   grid-column-gap: $m;
   grid-row-gap: $m;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   transition: all 0.5s;
 
-  @media only screen and (max-width: $vp-large) {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  &.is-card-view {
+    @media only screen and (min-width: $vp-medium) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-  @media only screen and (max-width: $vp-medium) {
-    grid-template-columns: repeat(1, 1fr);
+    @media only screen and (min-width: $vp-large) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   & > li > a {

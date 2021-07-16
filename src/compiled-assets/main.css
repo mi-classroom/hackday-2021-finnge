@@ -463,14 +463,14 @@ h3 {
   display: grid;
   grid-column-gap: 1.28rem;
   grid-row-gap: 1.28rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   transition: all 0.5s; }
-  @media only screen and (max-width: 1024px) {
-    .grid-container {
+  @media only screen and (min-width: 720px) {
+    .grid-container.is-card-view {
       grid-template-columns: repeat(2, 1fr); } }
-  @media only screen and (max-width: 720px) {
-    .grid-container {
-      grid-template-columns: repeat(1, 1fr); } }
+  @media only screen and (min-width: 1024px) {
+    .grid-container.is-card-view {
+      grid-template-columns: repeat(4, 1fr); } }
   .grid-container > li > a {
     display: flex;
     height: 100%; }
@@ -557,24 +557,29 @@ button.btn {
     border-top: solid 1px #b4b4b4; }
     .card-image-with-caption > figcaption > .additional-info {
       display: none; }
-  .is-list-view .card-image-with-caption {
-    display: grid;
-    grid-template-columns: 300px 1fr; }
-    .is-list-view .card-image-with-caption > figcaption > .additional-info {
+  @media screen and (min-width: 720px) {
+    .is-list-view .card-image-with-caption {
+      display: grid;
+      grid-template-columns: 300px 1fr; } }
+  @media screen and (min-width: 720px) {
+    .is-list-view .card-image-with-caption > figcaption {
+      border-top: none;
+      border-left: solid 1px #b4b4b4; } }
+  .is-list-view .card-image-with-caption > figcaption > .additional-info {
+    display: block;
+    /* stylelint-disable no-descending-specificity */
+    /* stylelint-enable no-descending-specificity */ }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dt,
+    .is-list-view .card-image-with-caption > figcaption > .additional-info dd,
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dd p {
+      display: inline;
+      color: #b4b4b4; }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dt {
+      color: #fff; }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dd::after {
       display: block;
-      /* stylelint-disable no-descending-specificity */
-      /* stylelint-enable no-descending-specificity */ }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dt,
-      .is-list-view .card-image-with-caption > figcaption > .additional-info dd,
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dd p {
-        display: inline;
-        color: #b4b4b4; }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dt {
-        color: #fff; }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dd::after {
-        display: block;
-        height: 0;
-        content: ""; }
+      height: 0;
+      content: ""; }
 
 /* Image with Caption
 ############################################################################ */
