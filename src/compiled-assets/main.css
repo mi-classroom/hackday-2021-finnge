@@ -432,6 +432,9 @@ h3 {
 .herotext {
   padding-bottom: 1.28rem;
   font-size: clamp(1.28rem, 3vw, 1.6rem); }
+  @media screen and (min-width: 1025px) {
+    .herotext {
+      max-width: 50%; } }
 
 .ut-bg-gradient > p {
   position: relative;

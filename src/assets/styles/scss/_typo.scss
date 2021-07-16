@@ -43,4 +43,8 @@ h3 {
 .herotext {
   padding-bottom: $m;
   font-size: clamp($m, 3vw, $l);
+
+  @media screen and (min-width: #{$vp-large + 1}) {
+    max-width: 50%;
+  }
 }
