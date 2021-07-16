@@ -387,8 +387,7 @@ textarea {
   font-family: "Roboto-light"; }
 
 input[type="submit"],
-input[type="reset"],
-button {
+input[type="reset"] {
   margin-right: 0.8rem;
   margin-bottom: 0.8rem;
   background-color: #fc0;
@@ -545,12 +544,15 @@ button.btn {
       margin-left: 0; }
     .image-description dl.rootdata dt[data-target] {
       margin-bottom: 1rem; }
-      .image-description dl.rootdata dt[data-target].is-open .btn {
+      .image-description dl.rootdata dt[data-target].is-open .cda-btn {
         transform: rotate(180deg); }
     .image-description dl.rootdata dt[data-target] + dd {
+      display: none;
       overflow: hidden;
       max-height: 1000px;
       padding-bottom: 0; }
+    .image-description dl.rootdata dt[data-target] + dd.is-open {
+      display: block; }
 
 /* Card Image with Caption
 ############################################################################ */

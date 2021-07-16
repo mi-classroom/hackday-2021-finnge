@@ -126,6 +126,22 @@ function navToNeighbours () {
 }
 
 
+function accordion(elementid) {
+  const buttonMarkup = '<button class="cda-btn is-right icon-arrow-down"></button>';
+  const $el = document.getElementById(elementid);
+  const $target = document.getElementById($el.dataset.target);
+
+  this.init = function () {
+    $el.addEventListener('click', this.toggle.bind(this));
+    $el.insertAdjacentHTML('beforeend', buttonMarkup);
+  };
+
+  this.toggle = function () {
+    $el.classList.toggle('is-open');
+    $target.classList.toggle('is-open');
+  }
+}
+
 
 /* Main
 ============================================================================ */
@@ -148,6 +164,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
   nav.init();
 
   /* Accordion */
+  let accordionIds = [
+    'dimensions-headline',
+    'material-headline',
+    'provenienz-headline',
+  ];
+  let accs = [];
+
+  accordionIds.forEach((id) => {
+    let acc = new accordion(id)
+    acc.init();
+    accs.push(acc);
+  })
+  
 
 });
 

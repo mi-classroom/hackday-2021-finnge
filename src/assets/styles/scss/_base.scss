@@ -36,8 +36,7 @@ textarea {
 }
 
 input[type="submit"],
-input[type="reset"],
-button {
+input[type="reset"] {
   margin-right: $xs;
   margin-bottom: $xs;
   background-color: $accent;

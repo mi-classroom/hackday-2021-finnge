@@ -37,20 +37,22 @@
       margin-bottom: $s;
 
       &.is-open {
-        .btn {
+        .cda-btn {
           transform: rotate(180deg);
         }
       }
     }
 
     dt[data-target] + dd {
+      display: none;
       overflow: hidden;
       max-height: 1000px;
       padding-bottom: 0;
     }
 
-    // dt[data-target] + dd.is-open{
-    // }
+    dt[data-target] + dd.is-open {
+      display: block;
+    }
   }
 }
 
