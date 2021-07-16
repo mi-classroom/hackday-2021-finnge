@@ -1,12 +1,13 @@
-.page, .footer{
+.page,
+.footer{
 
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: $m;
   grid-row-gap: $m;
+  grid-template-columns: repeat(4, 1fr);
   transition: all 0.5s;
 
   @media only screen and (max-width: $vp-large) {
@@ -18,16 +19,16 @@
   }
 
   & > li > a {
-    height: 100%;
     display: flex;
+    height: 100%;
   }
 }
 
-.grid-container-zweispalter{
+.grid-container-zweispalter {
   display: grid;
-  grid-template-columns: 1fr;
   grid-column-gap: $m;
   grid-row-gap: $m;
+  grid-template-columns: 1fr;
 
   @media only screen and (min-width: $vp-medium) {
     grid-template-columns: repeat(2, 1fr);

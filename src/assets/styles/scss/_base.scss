@@ -1,20 +1,22 @@
 html,
 body {
-  background-color: $darker;
   padding: $s;
-  font-family: $font-sans-serif;
+  background-color: $darker;
   color: $light;
-  
+  font-family: $font-sans-serif;
 }
 
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-main{
+main {
   margin-bottom: $xl;
 }
 
@@ -25,19 +27,19 @@ a {
 
 input,
 textarea {
-  background-color: $dark;
-  border: none;
-  color: #fff;
   padding: $xxs $xs;
+  border: none;
   margin: $xs 0;
+  background-color: $dark;
+  color: #fff;
   font-family: $font-sans-serif;
 }
 
 input[type="submit"],
 input[type="reset"],
 button {
-  background-color: $accent;
-  color: $darker;
   margin-right: $xs;
   margin-bottom: $xs;
+  background-color: $accent;
+  color: $darker;
 }

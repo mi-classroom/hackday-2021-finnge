@@ -3,11 +3,11 @@
 ############################################################################ */
 
 .card-image-with-caption {
-  overflow: hidden;
-  background-color: #000;
   position: relative;
+  overflow: hidden;
   flex-grow: 1;
-  
+  background-color: #000;
+
   >img {
     width: 100%;
     aspect-ratio: 1/1;
@@ -26,12 +26,10 @@
   }
 
   .is-list-view & {
-
     display: grid;
     grid-template-columns: 300px 1fr;
 
     >figcaption {
-
       >.additional-info {
         display: block;
 
@@ -46,16 +44,14 @@
           color: $lighter;
         }
 
-        >dd:after {
-          content: "";
+        >dd::after {
           display: block;
           height: 0;
+          content: "";
         }
-
       }
     }
   }
-
 }
 
 
@@ -63,7 +59,6 @@
 ############################################################################ */
 
 .image-with-caption {
-
   >img {
     width: 100%;
   }
@@ -74,50 +69,48 @@
 /* Image Description
 ############################################################################ */
 
-.image-description{
+.image-description {
   padding: 0;
   margin: 0;
 
-
-  dl.rootdata{
-
+  dl.rootdata {
     margin-bottom: $xl;
 
-    dt{
-      display: block;
+    dt {
       position: relative;
+      display: block;
       min-width: $s;
       padding-top: $s;
       color: $lighter;
 
-      &::after{
-          content: "";
-          display: inline-block;
-          padding-right: $xs;
+      &::after {
+        display: inline-block;
+        padding-right: $xs;
+        content: "";
       }
 
-      button.btn.is-right{
+      button.btn.is-right {
         top: $s;
       }
     }
 
-    dd{
-      border-bottom: solid 1px $dark;
+    dd {
       padding-bottom: $s;
+      border-bottom: solid 1px $dark;
       margin-left: 0;
     }
 
-    dt[data-target]{
+    dt[data-target] {
       margin-bottom: $s;
 
-      &.is-open{
-        .btn{
+      &.is-open {
+        .btn {
           transform: rotate(180deg);
         }
       }
     }
 
-    dt[data-target] + dd{
+    dt[data-target] + dd {
       overflow: hidden;
       max-height: 1000px;
       padding-bottom: 0;
@@ -132,7 +125,7 @@
 ############################################################################ */
 
 .image-form {
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: stretch;
 

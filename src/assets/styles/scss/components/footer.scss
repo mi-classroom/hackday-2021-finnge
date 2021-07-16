@@ -1,25 +1,25 @@
 .s-footer {
-  border-top: solid $dark 1px;
   padding-top: $m;
+  border-top: solid $dark 1px;
 
   a {
-    text-decoration: none;
     color: $lighter;
+    text-decoration: none;
   }
- 
+
   >.nav-wrap {
-    box-sizing: content-box;
     position: relative;
     height: $xl;
+    box-sizing: content-box;
     padding-bottom: $m;
-    margin-bottom: $m;
     border-bottom: solid 1px $dark;
+    margin-bottom: $m;
 
     >.nav-item {
       >a {
-        height: $xl;
         display: inline-block;
-        
+        height: $xl;
+
 
         >img {
           display: inline-block;
@@ -27,19 +27,17 @@
         }
 
         >span {
-          margin-left: $s;
-          margin-right: $s;
+          display: inline-flex;
           max-width: 20vw;
           height: $xl;
-          display: inline-flex;
           align-items: center;
+          margin-right: $s;
+          margin-left: $s;
         }
       }
 
-
       &.previous {
         >a {
-
           float: left;
 
           >img {
@@ -55,7 +53,6 @@
 
       &.next {
         >a {
-
           float: right;
 
           >img {

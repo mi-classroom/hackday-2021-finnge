@@ -1,24 +1,22 @@
 .header {
   position: relative;
-  border-bottom: solid 1px $dark;
   padding-bottom: $l;
+  border-bottom: solid 1px $dark;
   margin-bottom: $xl;
-  
+
   & a.logo {
+    display: block;
     font-weight: 100;
     text-decoration: none;
-    display: block;
-
   }
 
   >button.btn {
-
     position: absolute;
     top: $s;
     right: 0;
     display: none;
 
-    &.is-active{
+    &.is-active {
       display: block;
     }
 
@@ -48,7 +46,5 @@
         display: block;
       }
     }
-
   }
-
 }
