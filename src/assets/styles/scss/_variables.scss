@@ -1,0 +1,73 @@
+$darker:  #333333;
+$dark:    #666666;
+$light:   #B4B4B4;
+$lighter: #FFFFFF;
+$accent:  #FFCC00;
+$error:   #cc0000;
+
+
+
+
+/* Viewports
+-----------------------------------------------------------------------------*/
+$vp-medium: 720px;
+$vp-large: 1024px;
+$vp-xlarge: 1400px;
+
+
+/* Größen und Abstände
+-----------------------------------------------------------------------------*/
+
+$bfs: 1rem;
+$multiply: 0.008;
+
+/* Entlang der Renard10 Reihe 
+  100, 125, 160, 200, 250, 315 */
+
+$xs: $bfs * $multiply * 100;
+$s: $bfs * $multiply * 125;
+$m: $bfs * $multiply * 160;
+$l: $bfs * $multiply * 200;
+$xl: $bfs * $multiply * 250;
+$xxl: $bfs * $multiply * 315;
+
+
+
+
+
+/* Schriftarten
+-----------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'Roboto-light';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Roboto-light'), url(/assets/fonts/Roboto/Roboto-Light.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-regular';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto-regular'), url(/assets/fonts/Roboto/Roboto-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-bold';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Roboto-bold'), url(/assets/fonts/Roboto/Roboto-Bold.ttf);
+}
+
+$font-sans-serif: "Roboto-light";
+$font-sans-serif-bold: "Roboto-bold";
+
+
+
+
+
+/* Misc
+-----------------------------------------------------------------------------*/
+
+$border-radius: $xs;
+$border-width-s: 1px;
