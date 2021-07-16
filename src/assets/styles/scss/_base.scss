@@ -22,3 +22,22 @@ a {
   color: $accent;
   text-decoration: none;
 }
+
+input,
+textarea {
+  background-color: $dark;
+  border: none;
+  color: #fff;
+  padding: $xxs $xs;
+  margin: $xs 0;
+  font-family: $font-sans-serif;
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+  background-color: $accent;
+  color: $darker;
+  margin-right: $xs;
+  margin-bottom: $xs;
+}

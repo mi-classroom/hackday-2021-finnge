@@ -24,6 +24,7 @@ $multiply: 0.008;
 /* Entlang der Renard10 Reihe 
   100, 125, 160, 200, 250, 315 */
 
+$xxs: $bfs * $multiply * 80;
 $xs: $bfs * $multiply * 100;
 $s: $bfs * $multiply * 125;
 $m: $bfs * $multiply * 160;

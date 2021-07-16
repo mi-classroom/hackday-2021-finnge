@@ -373,6 +373,23 @@ a {
   color: #FFCC00;
   text-decoration: none; }
 
+input,
+textarea {
+  background-color: #666666;
+  border: none;
+  color: #fff;
+  padding: 0.64rem 0.8rem;
+  margin: 0.8rem 0;
+  font-family: "Roboto-light"; }
+
+input[type="submit"],
+input[type="reset"],
+button {
+  background-color: #FFCC00;
+  color: #333333;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem; }
+
 h1, h2, h3, p, code, pre {
   margin-bottom: 1.28rem; }
 
@@ -539,6 +556,17 @@ button.btn {
       overflow: hidden;
       max-height: 1000px;
       padding-bottom: 0; }
+
+/* Image Description
+############################################################################ */
+.image-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; }
+  .image-form input[type="date"] {
+    align-self: flex-start; }
+  .image-form label {
+    margin-bottom: 1rem; }
 
 .header {
   position: relative;
