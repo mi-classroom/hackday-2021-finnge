@@ -422,10 +422,16 @@ h3 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 1.28rem;
   grid-row-gap: 1.28rem;
   transition: all 0.5s; }
+  @media only screen and (max-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media only screen and (max-width: 720px) {
+    .grid-container {
+      grid-template-columns: repeat(1, 1fr); } }
   .grid-container > li > a {
     height: 100%;
     display: flex; }
@@ -435,6 +441,9 @@ h3 {
   grid-template-columns: 1fr;
   grid-column-gap: 1.28rem;
   grid-row-gap: 1.28rem; }
+  @media only screen and (min-width: 720px) {
+    .grid-container-zweispalter {
+      grid-template-columns: repeat(2, 1fr); } }
 
 button.btn {
   padding: 0;
@@ -464,7 +473,8 @@ button.btn {
 .card-image-with-caption {
   overflow: hidden;
   background-color: #000;
-  position: relative; }
+  position: relative;
+  flex-grow: 1; }
   .card-image-with-caption > img {
     width: 100%;
     aspect-ratio: 1/1;
