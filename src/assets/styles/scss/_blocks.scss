@@ -1,71 +1,4 @@
 
-/* Card Image with Caption
-############################################################################ */
-
-.card-image-with-caption {
-  position: relative;
-  overflow: hidden;
-  flex-grow: 1;
-  background-color: #000;
-
-  >img {
-    width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-  }
-
-  >figcaption {
-    padding: $m;
-    padding-top: $xl;
-    padding-bottom: $xs;
-    border-top: solid $border-width-s $light;
-
-    >.additional-info {
-      display: none;
-    }
-  }
-
-  .is-list-view & {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-
-    >figcaption {
-      >.additional-info {
-        display: block;
-
-        >dt,
-        dd,
-        >dd p {
-          display: inline;
-          color: $light;
-        }
-
-        >dt {
-          color: $lighter;
-        }
-
-        >dd::after {
-          display: block;
-          height: 0;
-          content: "";
-        }
-      }
-    }
-  }
-}
-
-
-/* Image with Caption
-############################################################################ */
-
-.image-with-caption {
-  >img {
-    width: 100%;
-  }
-
-  >figcaption {}
-}
-
 /* Image Description
 ############################################################################ */
 
@@ -116,12 +49,78 @@
       padding-bottom: 0;
     }
 
-    dt[data-target] + dd.is-open{
+    // dt[data-target] + dd.is-open{
+    // }
+  }
+}
+
+/* Card Image with Caption
+############################################################################ */
+
+.card-image-with-caption {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  background-color: #000;
+
+  >img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  >figcaption {
+    padding: $m;
+    padding-top: $xl;
+    padding-bottom: $xs;
+    border-top: solid $border-width-s $light;
+
+    >.additional-info {
+      display: none;
+    }
+  }
+
+  .is-list-view & {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+
+    >figcaption {
+      >.additional-info {
+        display: block;
+
+        /* stylelint-disable no-descending-specificity */
+        >dt,
+        dd,
+        > dd p {
+          display: inline;
+          color: $light;
+        }
+        /* stylelint-enable no-descending-specificity */
+
+        >dt {
+          color: $lighter;
+        }
+
+        >dd::after {
+          display: block;
+          height: 0;
+          content: "";
+        }
+      }
     }
   }
 }
 
-/* Image Description
+/* Image with Caption
+############################################################################ */
+
+.image-with-caption {
+  >img {
+    width: 100%;
+  }
+}
+
+/* Image Form
 ############################################################################ */
 
 .image-form {
