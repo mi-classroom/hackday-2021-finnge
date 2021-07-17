@@ -28,7 +28,7 @@ jobs:
       -
         name: Lint JS
         run: npm run lint:js
-        if: succeeded() || failed()
+        if: ${{ success() || failure() }}
   build:
     name: Build to GitHub Pages
     runs-on: ubuntu-latest
