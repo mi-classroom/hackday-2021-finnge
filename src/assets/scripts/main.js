@@ -119,8 +119,10 @@ function Accordion(elementid) {
   const $target = document.getElementById($el.dataset.target);
 
   this.init = () => {
-    $el.addEventListener('click', this.toggle.bind(this));
     $el.insertAdjacentHTML('beforeend', buttonMarkup);
+
+    const $button = $el.querySelector('.btn');
+    $button.addEventListener('click', this.toggle.bind(this));
   };
 
   this.toggle = () => {
