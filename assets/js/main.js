@@ -124,28 +124,6 @@ function navToNeighbours () {
     );
 
     $navigation.insertAdjacentHTML('beforeend', element);
-
-    /*<div class="nav-item previous" id="nav-item-prev">
-          <a href="{{url-zum-vorherigen-item}}">
-            <img src="{{img-src-des-vorherigen-items}}">
-            <span>{{title-des-vorherigen-items}}</span>
-          </a>
-        </div>
-        <div class="nav-item next" id="nav-item-next">
-          <a href="{{url-zum-naechsten-item}}">
-            <img src="{{img-src-des-naechsten-items}}">
-            <span>{{title-des-naechsten-items}}</span>
-          </a>
-        </div>*/
-      
-
-    /* Hier bitte den Code für die Navigation zwischen den Gemälden einfügen. 
-    
-    …
-    …
-    …
-
-    */
   }
 
   this.init = function() { 
@@ -160,7 +138,7 @@ function navToNeighbours () {
 
 
 function accordion(elementid) {
-  const buttonMarkup = '<button class="cda-btn is-right icon-arrow-down"></button>';
+  const buttonMarkup = '<button class="btn is-right icon-arrow-down"></button>';
   const $el = document.getElementById(elementid);
   const $target = document.getElementById($el.dataset.target);
 
