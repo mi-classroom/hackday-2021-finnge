@@ -2,6 +2,9 @@
 
 Das Projekt verwendet den Static Page Generator [11ty](https://www.11ty.dev/docs/). Als Template Sprache wird [Nunjucks](https://www.11ty.dev/docs/languages/nunjucks/) eingesetzt.
 
+## Umgesetzte Aufgaben
+
+Eine Liste der Aufgabenstellung ist in der [Tasks.md](./Tasks.md)-Datei zu finden. In dem [PR #1](https://github.com/mi-classroom/hackday-2021-finnge/pull/1) sind alle Commits aufgeführt, die zu einer Aufgabe gehören.
 
 ## Ordnerstruktur
 
