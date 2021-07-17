@@ -1,87 +1,72 @@
 /* Functions
 ============================================================================ */
 
-function formValidator() { 
-
-  let checkForm = function (form) {
-
-    const formInputs = form.elements;
-    const errorMessage = form.querySelector('.image-form__error-message');
+function FormValidator() {
+  const checkForm = (form) => {
+    const $errorMessage = form.querySelector('.image-form__error-message');
     let everythingIsFine = true;
-    errorMessage.innerText = '';
+    $errorMessage.innerText = '';
 
-    for (let i = 0; i < formInputs.length; i++) {
-      if (formInputs[i].type === 'reset' || formInputs[i].type === 'submit') {
-        continue;
+    Array.from(form.elements).forEach((formInput) => {
+      if (formInput.type === 'reset' || formInput.type === 'submit') {
+        return;
       }
 
-      formInputs[i].classList.remove('ut-has-error');
+      formInput.classList.remove('ut-has-error');
 
-      if (!formInputs[i].value) {
+      if (!formInput.value) {
         everythingIsFine = false;
-        formInputs[i].classList.add('ut-has-error');
+        formInput.classList.add('ut-has-error');
       }
-    }
+    });
 
     if (!everythingIsFine) {
-      errorMessage.innerText = "Es müssen alle Felder ausgefüllt werden";
+      $errorMessage.innerText = 'Es müssen alle Felder ausgefüllt werden';
       throw Error('Form Validation not successful');
     }
 
     return true;
-  }
+  };
 
-  this.scan = function () { 
-    document.querySelectorAll('form[data-js-validate=true]').forEach(function (form) {  
-      form.addEventListener('submit', function (event) {
+  this.scan = () => {
+    document.querySelectorAll('form[data-js-validate=true]').forEach((form) => {
+      form.addEventListener('submit', (event) => {
         event.preventDefault();
         try {
-          
           if (checkForm(form)) {
             form.submit();
           }
-        } catch(e) {
+        } catch (e) {
+          // eslint-disable-next-line no-console
           console.error(e);
         }
       });
     });
-  }
+  };
 }
 
+function ViewSwitcher() {
+  const switcherButton = document.querySelector('#viewSwitcher');
+  const overviewContainer = document.querySelector('#overview');
 
-
-
-
-function viewSwitcher() {
-
-  let switcherButton = document.querySelector('#viewSwitcher');
-  let overviewContainer = document.querySelector('#overview');
-  
-  this.init = function() {
-    
-    /* Gibt es überhaupt einen Overview Container? 
-       Denn auf den Detailseiten gibt es ja keinen :) */
+  this.init = () => {
     if (overviewContainer !== null) {
-      
-      /* Interaktionselement aktivieren (sichtbar machen) */
-      switcherButton.classList.add("is-active");
-
+      switcherButton.classList.add('is-active');
       switcherButton.addEventListener('click', this.switchState.bind(this));
     }
-  }
+  };
 
-  this.switchState = function() {
+  this.switchState = () => {
     if (switcherButton.dataset.view === 'list') {
-      switcherButton.dataset.view = 'cards'
+      switcherButton.dataset.view = 'cards';
 
       switcherButton.classList.remove('list-view');
-      switcherButton.classList.add('card-view')
+      switcherButton.classList.add('card-view');
 
       overviewContainer.classList.remove('is-list-view');
       overviewContainer.classList.add('is-card-view');
-
     } else if (switcherButton.dataset.view === 'cards') {
-      switcherButton.dataset.view = 'list'
+      switcherButton.dataset.view = 'list';
 
       switcherButton.classList.remove('card-view');
       switcherButton.classList.add('list-view');
@@ -92,13 +77,8 @@ function viewSwitcher() {
   };
 }
 
-
-
-
-
-function navToNeighbours () { 
-
-  let data = {};
+function NavToNeighbours() {
+  const data = {};
   data.previous = false;
   data.next = false;
 
@@ -112,82 +92,72 @@ function navToNeighbours () {
       </a>
     </div>`;
 
-  function generateNavitem(type, data) { 
-    console.log(type);
-    console.log(data);
-
+  function generateNavitem(type, itemData) {
     const element = template(
       type,
-      `../${data.link}`,
-      data.bildurlxs,
-      data.title,
+      `../${itemData.link}`,
+      itemData.bildurlxs,
+      itemData.title,
     );
 
     $navigation.insertAdjacentHTML('beforeend', element);
   }
 
-  this.init = function() { 
-    data.previous = (typeof previous != 'undefined' && previous.link ) ? previous : false;
-    data.next = (typeof next != 'undefined' && next.link) ? next : false;
-    
-    if (data.previous) { generateNavitem("previous", data.previous); }
-    if (data.next) { generateNavitem("next", data.next ); }
-  }
+  this.init = () => {
+    /* global previous, next */
+    data.previous = (typeof previous !== 'undefined' && previous.link) ? previous : false;
+    data.next = (typeof next !== 'undefined' && next.link) ? next : false;
 
+    if (data.previous) { generateNavitem('previous', data.previous); }
+    if (data.next) { generateNavitem('next', data.next); }
+  };
 }
 
-
-function accordion(elementid) {
+function Accordion(elementid) {
   const buttonMarkup = '<button class="btn is-right icon-arrow-down"></button>';
   const $el = document.getElementById(elementid);
   const $target = document.getElementById($el.dataset.target);
 
-  this.init = function () {
+  this.init = () => {
     $el.addEventListener('click', this.toggle.bind(this));
     $el.insertAdjacentHTML('beforeend', buttonMarkup);
   };
 
-  this.toggle = function () {
+  this.toggle = () => {
     $el.classList.toggle('is-open');
     $target.classList.toggle('is-open');
-  }
+  };
 }
-
 
 /* Main
 ============================================================================ */
 
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  
+document.addEventListener('DOMContentLoaded', () => {
   /* Hier die Funktionen aufrufen */
 
   /* Form Validator */
-  let validator = new formValidator();
+  const validator = new FormValidator();
   validator.scan();
 
   /* View Switcher */
-  let switcher = new viewSwitcher();
+  const switcher = new ViewSwitcher();
   switcher.init();
 
   /* Navigation zwischen den Gemälden */
-  let nav = new navToNeighbours();
+  const nav = new NavToNeighbours();
   nav.init();
 
   /* Accordion */
-  let accordionIds = [
+  const accordionIds = [
     'dimensions-headline',
     'material-headline',
     'provenienz-headline',
   ];
-  let accs = [];
+  const accs = [];
 
   accordionIds.forEach((id) => {
-    let acc = new accordion(id)
+    const acc = new Accordion(id);
     acc.init();
     accs.push(acc);
-  })
-  
-
+  });
 });
-
