@@ -339,19 +339,19 @@ textarea {
   font-family: 'Roboto-light';
   font-style: normal;
   font-weight: 100;
-  src: local("Roboto-light"), url(/assets/fonts/Roboto/Roboto-Light.ttf); }
+  src: local("Roboto-light"), url(fonts/Roboto/Roboto-Light.ttf); }
 
 @font-face {
   font-family: 'Roboto-regular';
   font-style: normal;
   font-weight: 400;
-  src: local("Roboto-regular"), url(/assets/fonts/Roboto/Roboto-Regular.ttf); }
+  src: local("Roboto-regular"), url(fonts/Roboto/Roboto-Regular.ttf); }
 
 @font-face {
   font-family: 'Roboto-bold';
   font-style: normal;
   font-weight: 700;
-  src: local("Roboto-bold"), url(/assets/fonts/Roboto/Roboto-Bold.ttf); }
+  src: local("Roboto-bold"), url(../fonts/Roboto/Roboto-Bold.ttf); }
 
 /* Misc
 ----------------------------------------------------------------------------- */

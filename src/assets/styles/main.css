@@ -339,19 +339,19 @@ textarea {
   font-family: 'Roboto-light';
   font-style: normal;
   font-weight: 100;
-  src: local("Roboto-light"), url(/assets/fonts/Roboto/Roboto-Light.ttf); }
+  src: local("Roboto-light"), url(fonts/Roboto/Roboto-Light.ttf); }
 
 @font-face {
   font-family: 'Roboto-regular';
   font-style: normal;
   font-weight: 400;
-  src: local("Roboto-regular"), url(/assets/fonts/Roboto/Roboto-Regular.ttf); }
+  src: local("Roboto-regular"), url(fonts/Roboto/Roboto-Regular.ttf); }
 
 @font-face {
   font-family: 'Roboto-bold';
   font-style: normal;
   font-weight: 700;
-  src: local("Roboto-bold"), url(/assets/fonts/Roboto/Roboto-Bold.ttf); }
+  src: local("Roboto-bold"), url(fonts/Roboto/Roboto-Bold.ttf); }
 
 /* Misc
 ----------------------------------------------------------------------------- */
@@ -387,8 +387,7 @@ textarea {
   font-family: "Roboto-light"; }
 
 input[type="submit"],
-input[type="reset"],
-button {
+input[type="reset"] {
   margin-right: 0.8rem;
   margin-bottom: 0.8rem;
   background-color: #fc0;
@@ -421,14 +420,33 @@ h1 {
   transition: 0.5s; }
 
 h2 {
+  color: #fff;
   font-size: 1.6rem; }
 
 h3 {
   font-size: 1.28rem; }
 
+.subtitle {
+  margin-bottom: 2rem;
+  color: #fff;
+  font-size: 1.28rem; }
+
+h2 + .subtitle::before {
+  display: block;
+  width: 5.04rem;
+  border: solid 1px #fc0;
+  margin-bottom: 1rem;
+  content: ''; }
+
+.header > h1 {
+  font-size: clamp(1.6rem, 3vw, 2rem); }
+
 .herotext {
   padding-bottom: 1.28rem;
-  font-size: 1.6rem; }
+  font-size: clamp(1.28rem, 3vw, 1.6rem); }
+  @media screen and (min-width: 1025px) {
+    .herotext {
+      max-width: 50%; } }
 
 .ut-bg-gradient > p {
   position: relative;
@@ -457,14 +475,14 @@ h3 {
   display: grid;
   grid-column-gap: 1.28rem;
   grid-row-gap: 1.28rem;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   transition: all 0.5s; }
-  @media only screen and (max-width: 1024px) {
-    .grid-container {
+  @media only screen and (min-width: 720px) {
+    .grid-container.is-card-view {
       grid-template-columns: repeat(2, 1fr); } }
-  @media only screen and (max-width: 720px) {
-    .grid-container {
-      grid-template-columns: repeat(1, 1fr); } }
+  @media only screen and (min-width: 1024px) {
+    .grid-container.is-card-view {
+      grid-template-columns: repeat(4, 1fr); } }
   .grid-container > li > a {
     display: flex;
     height: 100%; }
@@ -526,12 +544,15 @@ button.btn {
       margin-left: 0; }
     .image-description dl.rootdata dt[data-target] {
       margin-bottom: 1rem; }
-      .image-description dl.rootdata dt[data-target].is-open .btn {
+      .image-description dl.rootdata dt[data-target].is-open .cda-btn {
         transform: rotate(180deg); }
     .image-description dl.rootdata dt[data-target] + dd {
+      display: none;
       overflow: hidden;
       max-height: 1000px;
       padding-bottom: 0; }
+    .image-description dl.rootdata dt[data-target] + dd.is-open {
+      display: block; }
 
 /* Card Image with Caption
 ############################################################################ */
@@ -551,24 +572,29 @@ button.btn {
     border-top: solid 1px #b4b4b4; }
     .card-image-with-caption > figcaption > .additional-info {
       display: none; }
-  .is-list-view .card-image-with-caption {
-    display: grid;
-    grid-template-columns: 300px 1fr; }
-    .is-list-view .card-image-with-caption > figcaption > .additional-info {
+  @media screen and (min-width: 720px) {
+    .is-list-view .card-image-with-caption {
+      display: grid;
+      grid-template-columns: 300px 1fr; } }
+  @media screen and (min-width: 720px) {
+    .is-list-view .card-image-with-caption > figcaption {
+      border-top: none;
+      border-left: solid 1px #b4b4b4; } }
+  .is-list-view .card-image-with-caption > figcaption > .additional-info {
+    display: block;
+    /* stylelint-disable no-descending-specificity */
+    /* stylelint-enable no-descending-specificity */ }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dt,
+    .is-list-view .card-image-with-caption > figcaption > .additional-info dd,
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dd p {
+      display: inline;
+      color: #b4b4b4; }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dt {
+      color: #fff; }
+    .is-list-view .card-image-with-caption > figcaption > .additional-info > dd::after {
       display: block;
-      /* stylelint-disable no-descending-specificity */
-      /* stylelint-enable no-descending-specificity */ }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dt,
-      .is-list-view .card-image-with-caption > figcaption > .additional-info dd,
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dd p {
-        display: inline;
-        color: #b4b4b4; }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dt {
-        color: #fff; }
-      .is-list-view .card-image-with-caption > figcaption > .additional-info > dd::after {
-        display: block;
-        height: 0;
-        content: ""; }
+      height: 0;
+      content: ""; }
 
 /* Image with Caption
 ############################################################################ */
@@ -585,6 +611,9 @@ button.btn {
     align-self: flex-start; }
   .image-form label {
     margin-bottom: 1rem; }
+  .image-form__error-message {
+    color: #c00;
+    font-family: "Roboto-bold"; }
 
 .header {
   position: relative;
@@ -627,7 +656,6 @@ button.btn {
     height: 2rem;
     box-sizing: content-box;
     padding-bottom: 1.28rem;
-    border-bottom: solid 1px #666;
     margin-bottom: 1.28rem; }
     .s-footer > .nav-wrap > .nav-item > a {
       display: inline-block;

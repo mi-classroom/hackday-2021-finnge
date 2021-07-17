@@ -63,7 +63,7 @@ module.exports = function (eleventyConfig) {
       layouts: '_layouts',
       output: 'docs',
     },
-    pathPrefix: "",
+    pathPrefix: '/hackday-2021-finnge/',
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     templateFormats: [
