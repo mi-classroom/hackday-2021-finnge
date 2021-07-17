@@ -544,7 +544,7 @@ button.btn {
       margin-left: 0; }
     .image-description dl.rootdata dt[data-target] {
       margin-bottom: 1rem; }
-      .image-description dl.rootdata dt[data-target].is-open .cda-btn {
+      .image-description dl.rootdata dt[data-target].is-open .btn {
         transform: rotate(180deg); }
     .image-description dl.rootdata dt[data-target] + dd {
       display: none;
