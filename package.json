@@ -18,7 +18,8 @@
     "live": "npm run build && npm run serve:prod",
     "lint:css": "stylelint src/assets/styles/scss",
     "lint:css:fix": "stylelint src/assets/styles/scss --fix",
-    "test": "npm run lint:css"
+    "lint:js": "eslint src/assets/scripts",
+    "lint:js:fix": "eslint src/assets/scripts --fix"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,9 @@
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
     "concat-glob-cli": "^0.1.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
     "html-minifier": "^4.0.0",
     "md5-file": "^5.0.0",
     "node-sass": "^6.0.1",
