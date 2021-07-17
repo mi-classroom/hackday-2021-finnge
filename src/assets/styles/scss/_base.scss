@@ -1,24 +1,44 @@
 html,
 body {
-  background-color: $darker;
   padding: $s;
-  font-family: $font-sans-serif;
+  background-color: $darker;
   color: $light;
-  
+  font-family: $font-sans-serif;
 }
 
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-main{
+main {
   margin-bottom: $xl;
 }
 
 a {
   color: $accent;
   text-decoration: none;
+}
+
+input,
+textarea {
+  padding: $xxs $xs;
+  border: none;
+  margin: $xs 0;
+  background-color: $dark;
+  color: #fff;
+  font-family: $font-sans-serif;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  margin-right: $xs;
+  margin-bottom: $xs;
+  background-color: $accent;
+  color: $darker;
 }

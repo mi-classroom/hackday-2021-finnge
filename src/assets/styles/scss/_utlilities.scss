@@ -1,33 +1,32 @@
-.ut-bg-gradient{
-  & > p{
+.ut-bg-gradient {
+  & > p {
     position: relative;
     z-index: 200;
   }
 
-  &::before{
-    content: "";
+  &::before {
     position: absolute;
+    z-index: 0;
     top: 0;
-    left: 0;
     right: 0;
     bottom: 0;
-    background-image: linear-gradient(to top,rgba(0,0,0,1),rgba(0,0,0,0));
-    z-index: 0;
+    left: 0;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    content: "";
   }
 }
 
-.ut-box-shadow{
-  box-shadow: 0 0 $s rgba(0,0,0,0.5);
+.ut-box-shadow {
+  box-shadow: 0 0 $s rgba(0, 0, 0, 0.5);
 }
 
-.ut-box-medium{
+// .ut-box-medium{
+// }
 
-}
-
-.ut-more-vspace{
+.ut-more-vspace {
   margin-bottom: $l;
 }
 
-.ut-has-error{
+.ut-has-error {
   border: solid 2px $error !important;
 }

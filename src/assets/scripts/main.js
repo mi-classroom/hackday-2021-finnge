@@ -1,120 +1,165 @@
 /* Functions
 ============================================================================ */
 
-function formValidator() { 
+function FormValidator() {
+  const checkForm = (form) => {
+    const $errorMessage = form.querySelector('.image-form__error-message');
+    let everythingIsFine = true;
+    $errorMessage.innerText = '';
 
-  let checkForm = function (form) {
-    
-    console.log(form);
+    Array.from(form.elements).forEach((formInput) => {
+      if (formInput.type === 'reset' || formInput.type === 'submit') {
+        return;
+      }
 
-    /* Hier bitte die Validierung einfügen 
-    
-    …
-    …
-    …
+      formInput.classList.remove('ut-has-error');
 
-    */
-    
-  }
+      if (!formInput.value) {
+        everythingIsFine = false;
+        formInput.classList.add('ut-has-error');
+      }
+    });
 
-  this.scan = function () { 
-    document.querySelectorAll('form[data-js-validate=true]').forEach(function (form) {  
-      form.addEventListener('submit', function (event) {
+    if (!everythingIsFine) {
+      $errorMessage.innerText = 'Es müssen alle Felder ausgefüllt werden';
+      throw Error('Form Validation not successful');
+    }
+
+    return true;
+  };
+
+  this.scan = () => {
+    document.querySelectorAll('form[data-js-validate=true]').forEach((form) => {
+      form.addEventListener('submit', (event) => {
         event.preventDefault();
-        checkForm(form);
+        try {
+          if (checkForm(form)) {
+            form.submit();
+          }
+        } catch (e) {
+          // eslint-disable-next-line no-console
+          console.error(e);
+        }
       });
     });
-  }
+  };
 }
 
+function ViewSwitcher() {
+  const switcherButton = document.querySelector('#viewSwitcher');
+  const overviewContainer = document.querySelector('#overview');
 
-
-
-
-function viewSwitcher() {
-
-  let switcherButton = document.querySelector('#viewSwitcher');
-  let overviewContainer = document.querySelector('#overview');
-  
-  this.init = function() {
-    
-    /* Gibt es überhaupt einen Overview Container? 
-       Denn auf den Detailseiten gibt es ja keinen :) */
+  this.init = () => {
     if (overviewContainer !== null) {
-      
-      /* Interaktionselement aktivieren (sichtbar machen) */
-      switcherButton.classList.add("is-active");
-
-      /* Hier bitte den restlichen Code für den ViewSwitcher einfügen.
-         Für den Switcher Button gibt es schon die CSS-Klassen
-         card-view: für den Card View (default)
-         list-view: für den List View
-
-         …
-         …
-         …
-
-      */
+      switcherButton.classList.add('is-active');
+      switcherButton.addEventListener('click', this.switchState.bind(this));
     }
-  }
+  };
+
+  this.switchState = () => {
+    if (switcherButton.dataset.view === 'list') {
+      switcherButton.dataset.view = 'cards';
+
+      switcherButton.classList.remove('list-view');
+      switcherButton.classList.add('card-view');
+
+      overviewContainer.classList.remove('is-list-view');
+      overviewContainer.classList.add('is-card-view');
+    } else if (switcherButton.dataset.view === 'cards') {
+      switcherButton.dataset.view = 'list';
+
+      switcherButton.classList.remove('card-view');
+      switcherButton.classList.add('list-view');
+
+      overviewContainer.classList.remove('is-card-view');
+      overviewContainer.classList.add('is-list-view');
+    }
+  };
 }
 
-
-
-
-
-function navToNeighbours () { 
-
-  let data = {};
+function NavToNeighbours() {
+  const data = {};
   data.previous = false;
   data.next = false;
 
-  function generateNavitem(type, data) { 
-    console.log(type);
-    console.log(data);
+  const $navigation = document.querySelector('[data-js-footer-nav]');
 
-    /* Hier bitte den Code für die Navigation zwischen den Gemälden einfügen. 
-    
-    …
-    …
-    …
+  const template = (type, url, img, title) => `
+    <div class="nav-item ${type}">
+      <a href="${url}">
+        <img src="${img}">
+        <span>${title}</span>
+      </a>
+    </div>`;
 
-    */
+  function generateNavitem(type, itemData) {
+    const element = template(
+      type,
+      `../${itemData.link}`,
+      itemData.bildurlxs,
+      itemData.title,
+    );
+
+    $navigation.insertAdjacentHTML('beforeend', element);
   }
 
-  this.init = function() { 
-    data.previous = (typeof previous != 'undefined' && previous.link ) ? previous : false;
-    data.next = (typeof next != 'undefined' && next.link) ? next : false;
-    
-    if (data.previous) { generateNavitem("previous", data.previous); }
-    if (data.next) { generateNavitem("next", data.next ); }
-  }
+  this.init = () => {
+    /* global previous, next */
+    data.previous = (typeof previous !== 'undefined' && previous.link) ? previous : false;
+    data.next = (typeof next !== 'undefined' && next.link) ? next : false;
 
+    if (data.previous) { generateNavitem('previous', data.previous); }
+    if (data.next) { generateNavitem('next', data.next); }
+  };
 }
 
+function Accordion(elementid) {
+  const buttonMarkup = '<button class="btn is-right icon-arrow-down"></button>';
+  const $el = document.getElementById(elementid);
+  const $target = document.getElementById($el.dataset.target);
 
+  this.init = () => {
+    $el.insertAdjacentHTML('beforeend', buttonMarkup);
+
+    const $button = $el.querySelector('.btn');
+    $button.addEventListener('click', this.toggle.bind(this));
+  };
+
+  this.toggle = () => {
+    $el.classList.toggle('is-open');
+    $target.classList.toggle('is-open');
+  };
+}
 
 /* Main
 ============================================================================ */
 
-
-document.addEventListener("DOMContentLoaded", function(event) {
-  
+document.addEventListener('DOMContentLoaded', () => {
   /* Hier die Funktionen aufrufen */
 
   /* Form Validator */
-  let validator = new formValidator();
+  const validator = new FormValidator();
   validator.scan();
 
   /* View Switcher */
-  let switcher = new viewSwitcher();
+  const switcher = new ViewSwitcher();
   switcher.init();
 
   /* Navigation zwischen den Gemälden */
-  let nav = new navToNeighbours();
+  const nav = new NavToNeighbours();
   nav.init();
 
   /* Accordion */
+  const accordionIds = [
+    'dimensions-headline',
+    'material-headline',
+    'provenienz-headline',
+  ];
+  const accs = [];
 
+  accordionIds.forEach((id) => {
+    const acc = new Accordion(id);
+    acc.init();
+    accs.push(acc);
+  });
 });
-

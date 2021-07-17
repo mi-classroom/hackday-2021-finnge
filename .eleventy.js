@@ -15,7 +15,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/images');
 
   // Copy all fonts
-  eleventyConfig.addPassthroughCopy({ 'src/assets/fonts': 'assets/fonts' });
+  eleventyConfig.addPassthroughCopy({ 'src/fonts': 'assets/fonts' });
 
   // Copy asset images
   eleventyConfig.addPassthroughCopy({ 'src/assets/images': 'assets/images' });
@@ -63,7 +63,7 @@ module.exports = function (eleventyConfig) {
       layouts: '_layouts',
       output: 'docs',
     },
-    pathPrefix: "",
+    pathPrefix: '/hackday-2021-finnge/',
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     templateFormats: [

@@ -12,12 +12,35 @@ braucht:
   $caption(:String): Bildunterschrift (optional)
 -->
 
-    <figure class="image-with-caption">
-      <img
-        src="http://lucascranach.org/thumbnails/DK_SMK_KMSsp721_FR414B/01_Overall/DK_SMK_KMSsp721_FR414B_2013-09-27_Overall.jpg"
-        srcset="http://lucascranach.org/thumbnails/DK_SMK_KMSsp721_FR414B/01_Overall/DK_SMK_KMSsp721_FR414B_2013-09-27_Overall.jpg 500w, http://lucascranach.org/thumbnails/CH_KMB_177a_FR187-188/01_Overall/CH_KMB_177a_FR187-188_2010-03_Overall.jpg 600w, http://lucascranach.org/thumbnails/US_MIA_57-10_FR128/01_Overall/US_MIA_57-10_FR128_2012_Overall.jpg 700w"
-        sizes="(min-width: 50em) 33vw, (min-width: 28em) 50vw, 100vw" alt="Bildnis Anna Buchner, geborene Lindacker">
-    </figure>
+    <div class="image-data">
+      <figure class="image-with-caption">
+        <img src="https://lucascranach.org/thumbnails/DK_SMK_KMSsp721_FR414B/01_Overall/DK_SMK_KMSsp721_FR414B_2013-09-27_Overall.jpg" srcset="https://lucascranach.org/thumbnails/DK_SMK_KMSsp721_FR414B/01_Overall/DK_SMK_KMSsp721_FR414B_2013-09-27_Overall.jpg 500w, https://lucascranach.org/thumbnails/CH_KMB_177a_FR187-188/01_Overall/CH_KMB_177a_FR187-188_2010-03_Overall.jpg 600w, https://lucascranach.org/thumbnails/US_MIA_57-10_FR128/01_Overall/US_MIA_57-10_FR128_2012_Overall.jpg 700w" sizes="(min-width: 50em) 33vw, (min-width: 28em) 50vw, 100vw" alt="Bildnis Anna Buchner, geborene Lindacker">
+      </figure>
+      
+      <form class="image-form" data-js-validate="true">
+        <input type="text" name="filetype" id="filetype">
+        <label for="filetype">Dateiart</label>
+      
+        <textarea rows="3" name="description" id="description"></textarea>
+        <label for="description">Beschreibung</label>
+      
+        <input type="text" name="imagerights" id="imagerights">
+        <label for="imagerights">Abbildung Rechte</label>
+      
+        <input type="text" name="imagesource" id="imagesource">
+        <label for="imagerights">Abbildung Quelle</label>
+      
+        <input type="date" name="imagesource" id="imagesource" placeholder="tt.mm.jjjj">
+        <label for="imagerights">Datum</label>
+
+        <p class="image-form__error-message"></p>
+
+        <div>
+          <input type="reset" value="abbrechen">
+          <input type="submit" value="speichern">
+        </div>
+      </form>
+    </div>
 
     <!--
 Doku: tbd.
@@ -25,14 +48,14 @@ Doku: tbd.
 
     <div class="image-description">
       <h2>Bildnis Anna Buchner, geborene Lindacker</h2>
+      <p class="subtitle">Lucas Cranach der Ältere</p>
       <dl class="rootdata">
         <dt>Inventarnummer</dt>
         <dd>US_MIA_57-10</dd>
-        <dt>Zuschreibung</dt><dd>Lucas Cranach der Ältere</dd> 
         <dt>Datum</dt>
         <dd>1515 - 1525</dd>
-        <dt id="classification-headline" data-target="classification-text">Klassifikation</dt>
-        <dd id="classification-text">Malerei</dd>
+        <dt>Klassifikation</dt>
+        <dd>Malerei</dd>
         <dt id="dimensions-headline" data-target="dimensions-text">Maße</dt>
         <dd id="dimensions-text">
           <p>Maße Bildträger: 40,6 x 27,3 x 0,5 cm (16 x 10 3/4 x 3/16 Zoll)<br />

@@ -1,0 +1,56 @@
+name: CI Process
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  coding-style:
+    name: Coding Style
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout Code
+        uses: actions/checkout@v2.3.4
+      -
+        name: Setup Node Environment
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+      -
+        name: Install node dependencies
+        run: npm install -D
+      -
+        name: Lint CSS
+        run: npm run lint:css
+      -
+        name: Lint JS
+        run: npm run lint:js
+        if: ${{ success() || failure() }}
+  build:
+    name: Build to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout Code
+        uses: actions/checkout@v2.3.4
+      -
+        name: Setup Node Environment
+        uses: actions/setup-node@v2.2.0
+        with:
+          node-version: 'lts/*'
+          cache: 'npm'
+      -
+        name: Install node dependencies
+        run: npm install -D
+      - 
+        name: Build
+        run: npm run build
+      -
+        name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./docs
+          github_token: ${{ secrets.GITHUB_TOKEN }}
